@@ -86,8 +86,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 new EnviaAlunosTask(this).execute();
                 break;
             case R.id.menu_baixar_provas:
-                Intent intent = new Intent(this,ProvasActivity.class);
-                startActivity(intent);
+                Intent vaiPraProvas = new Intent(this,ProvasActivity.class);
+                startActivity(vaiPraProvas);
                 break;
         }
         return super.onOptionsItemSelected(item);

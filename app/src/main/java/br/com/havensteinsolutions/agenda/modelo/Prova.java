@@ -2,9 +2,10 @@ package br.com.havensteinsolutions.agenda.modelo;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Prova {
+public class Prova implements Serializable {
     private String materia;
     private String data;
     private List<String> topico;
