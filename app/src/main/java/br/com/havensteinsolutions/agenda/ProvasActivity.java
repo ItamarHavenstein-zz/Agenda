@@ -1,19 +1,10 @@
 package br.com.havensteinsolutions.agenda;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import br.com.havensteinsolutions.agenda.modelo.Prova;
 
@@ -28,7 +19,7 @@ public class ProvasActivity extends AppCompatActivity {
         FragmentTransaction tx = fragmentManager.beginTransaction();
 
         tx.replace(R.id.frame_principal, new ListaProvasFragment());
-        if(estaNoModoPaisagem()) {
+        if (estaNoModoPaisagem()) {
             tx.replace(R.id.frame_secundario, new DetalhesProvasFragment());
         }
 
@@ -41,7 +32,7 @@ public class ProvasActivity extends AppCompatActivity {
 
     public void selecionarProva(Prova prova) {
         FragmentManager manager = getSupportFragmentManager();
-        if(!estaNoModoPaisagem()) {
+        if (!estaNoModoPaisagem()) {
             FragmentTransaction tx = manager.beginTransaction();
 
             DetalhesProvasFragment detalhesFragment = new DetalhesProvasFragment();
@@ -52,7 +43,7 @@ public class ProvasActivity extends AppCompatActivity {
             tx.replace(R.id.frame_principal, detalhesFragment);
             tx.addToBackStack(null);
             tx.commit();
-        }else{
+        } else {
             DetalhesProvasFragment detalhesFragment = (DetalhesProvasFragment) manager.findFragmentById(R.id.frame_secundario);
             detalhesFragment.populaCamposCon(prova);
         }
