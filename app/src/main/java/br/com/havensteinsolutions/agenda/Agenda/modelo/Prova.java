@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda.modelo;
+package br.com.havensteinsolutions.agenda.Agenda.modelo;
 
 import androidx.annotation.NonNull;
 

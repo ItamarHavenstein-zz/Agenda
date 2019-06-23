@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda.Receiver;
+package br.com.havensteinsolutions.agenda.Agenda.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 import br.com.havensteinsolutions.agenda.R;
-import br.com.havensteinsolutions.agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
 
 public class SmsReceiver extends BroadcastReceiver {
 

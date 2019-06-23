@@ -1,17 +1,13 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -35,6 +31,7 @@ public class Localizador implements GoogleApiClient.ConnectionCallbacks, Locatio
         this.mapa = mapa;
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         LocationRequest request = new LocationRequest();
@@ -42,21 +39,7 @@ public class Localizador implements GoogleApiClient.ConnectionCallbacks, Locatio
         request.setInterval(1000);
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
-            return;
-        }
         LocationServices.FusedLocationApi.requestLocationUpdates(Client, request, this);
-    }
-
-    private int checkSelfPermission(String accessFineLocation) {
-        return 0;
     }
 
     @Override

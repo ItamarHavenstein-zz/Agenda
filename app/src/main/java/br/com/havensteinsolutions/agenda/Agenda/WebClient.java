@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import java.io.IOException;
 import java.io.PrintStream;

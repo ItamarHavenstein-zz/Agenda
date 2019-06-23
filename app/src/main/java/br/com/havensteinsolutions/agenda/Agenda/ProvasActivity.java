@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.os.Bundle;
 
@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import br.com.havensteinsolutions.agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.Agenda.DetalhesProvasFragment;
+import br.com.havensteinsolutions.agenda.Agenda.ListaProvasFragment;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.R;
 
 public class ProvasActivity extends AppCompatActivity {
 

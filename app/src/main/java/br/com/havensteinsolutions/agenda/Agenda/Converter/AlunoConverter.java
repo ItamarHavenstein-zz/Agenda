@@ -1,11 +1,11 @@
-package br.com.havensteinsolutions.agenda.Converter;
+package br.com.havensteinsolutions.agenda.Agenda.Converter;
 
 import org.json.JSONException;
 import org.json.JSONStringer;
 
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
 public class AlunoConverter {
 

@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.havensteinsolutions.agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.R;
 
 public class DetalhesProvaActivity extends AppCompatActivity {
 

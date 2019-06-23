@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,8 +19,9 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 
-import br.com.havensteinsolutions.agenda.dao.AlunoDAO;
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.R;
 
 public class FormularioActivity extends AppCompatActivity {
     public static final int CODIGO_CAMERA = 567;

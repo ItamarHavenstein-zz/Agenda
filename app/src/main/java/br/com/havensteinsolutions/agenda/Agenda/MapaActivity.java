@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-import com.google.android.gms.maps.SupportMapFragment;
+import br.com.havensteinsolutions.agenda.R;
 
 public class MapaActivity extends AppCompatActivity {
 
@@ -14,6 +14,8 @@ public class MapaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
+
+
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction tx = manager.beginTransaction();

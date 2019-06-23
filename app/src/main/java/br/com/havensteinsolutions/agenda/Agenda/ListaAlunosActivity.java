@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,9 +18,10 @@ import androidx.core.app.ActivityCompat;
 
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.adapter.AlunosAdapter;
-import br.com.havensteinsolutions.agenda.dao.AlunoDAO;
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.adapter.AlunosAdapter;
+import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.R;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 

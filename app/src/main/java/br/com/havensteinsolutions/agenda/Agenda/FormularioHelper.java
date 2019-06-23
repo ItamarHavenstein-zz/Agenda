@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,7 +6,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.FormularioActivity;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.R;
 
 public class FormularioHelper {
     private final EditText campoNome;

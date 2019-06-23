@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda.dao;
+package br.com.havensteinsolutions.agenda.Agenda.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
 public class AlunoDAO extends SQLiteOpenHelper {
 

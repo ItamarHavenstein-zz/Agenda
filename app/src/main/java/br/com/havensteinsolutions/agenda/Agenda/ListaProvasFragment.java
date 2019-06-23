@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.os.Bundle;
 
@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Prova;
+import br.com.havensteinsolutions.agenda.R;
 
 public class ListaProvasFragment extends Fragment {
     @Override

@@ -1,9 +1,8 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,8 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.dao.AlunoDAO;
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.Localizador;
+import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
 public class MapaFragment extends SupportMapFragment implements OnMapReadyCallback {
     @Override

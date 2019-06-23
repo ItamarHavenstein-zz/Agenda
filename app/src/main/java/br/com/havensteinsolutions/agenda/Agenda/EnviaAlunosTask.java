@@ -1,4 +1,4 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Agenda;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.Converter.AlunoConverter;
-import br.com.havensteinsolutions.agenda.dao.AlunoDAO;
-import br.com.havensteinsolutions.agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.Converter.AlunoConverter;
+import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
 public class EnviaAlunosTask extends AsyncTask<Void, Void, String> {
 
