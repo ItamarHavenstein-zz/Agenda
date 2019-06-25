@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import br.com.havensteinsolutions.agenda.R;
 
-public class MainActivity extends AppCompatActivity {
+public class FormularioCadastroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_formulario_cadastro);
     }
 }

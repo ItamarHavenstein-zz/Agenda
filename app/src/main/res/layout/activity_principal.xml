@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PrincipalActivity">
+    tools:context=".Projeto.PrincipalActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,7 +26,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:background="#FF9800"
+            android:background="#0D740B"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/agenda"
             android:textColor="#000"
@@ -46,10 +46,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            android:background="#FF9800"
+            android:background="#0D740B"
             android:elevation="@dimen/cardview_default_elevation"
             android:text="@string/food"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="24sp"
             android:textStyle="bold" />
 

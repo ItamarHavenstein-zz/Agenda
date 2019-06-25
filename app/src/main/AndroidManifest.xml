@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".Projeto.PrincipalActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Food.MainActivity" />
+        <activity android:name=".Food.FormularioCadastroActivity" />
         <activity android:name=".Agenda.MapaActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

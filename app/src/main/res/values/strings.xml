@@ -12,4 +12,11 @@
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="food">Food</string>
     <string name="agenda">Agenda</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="cpf">Cpf</string>
+    <string name="telefone_com_ddd">Telefone com DDD</string>
+    <string name="e_mail">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>

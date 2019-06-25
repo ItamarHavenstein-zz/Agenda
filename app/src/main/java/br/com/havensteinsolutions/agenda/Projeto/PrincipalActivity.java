@@ -1,10 +1,7 @@
-package br.com.havensteinsolutions.agenda;
+package br.com.havensteinsolutions.agenda.Projeto;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,7 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 import br.com.havensteinsolutions.agenda.Agenda.ListaAlunosActivity;
-import br.com.havensteinsolutions.agenda.Food.MainActivity;
+import br.com.havensteinsolutions.agenda.Food.FormularioCadastroActivity;
+import br.com.havensteinsolutions.agenda.R;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -43,7 +41,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent vaiParaFood = new Intent(PrincipalActivity.this, MainActivity.class);
+                Intent vaiParaFood = new Intent(PrincipalActivity.this, FormularioCadastroActivity.class);
                 startActivity(vaiParaFood);
             }
         });
