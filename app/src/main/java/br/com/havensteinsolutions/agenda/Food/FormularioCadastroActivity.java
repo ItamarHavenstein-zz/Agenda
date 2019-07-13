@@ -12,6 +12,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import br.com.caelum.stella.format.CPFFormatter;
 import br.com.havensteinsolutions.agenda.Food.Formatter.FormataTelefoneComDdd;
 import br.com.havensteinsolutions.agenda.Food.validator.ValidaCpf;
+import br.com.havensteinsolutions.agenda.Food.validator.ValidaEmail;
 import br.com.havensteinsolutions.agenda.Food.validator.ValidaTelefoneComDdd;
 import br.com.havensteinsolutions.agenda.Food.validator.ValidacaoPadrao;
 import br.com.havensteinsolutions.agenda.R;
@@ -42,7 +43,16 @@ public class FormularioCadastroActivity extends AppCompatActivity {
 
     private void configuraCampoEmail() {
         TextInputLayout textInputEmail = (TextInputLayout) findViewById(R.id.formulario_cadastro_campo_email);
-        adicionaValidacaoPadrao(textInputEmail);
+        EditText campoEmail = textInputEmail.getEditText();
+        ValidaEmail validador = new ValidaEmail(textInputEmail);
+        campoEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validador.estaValido();
+                }
+            }
+        });
     }
 
     private void configuraCampoTelefone() {
