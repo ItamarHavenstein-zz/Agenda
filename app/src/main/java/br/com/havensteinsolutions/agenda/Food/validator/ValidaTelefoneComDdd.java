@@ -6,7 +6,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import br.com.havensteinsolutions.agenda.Food.Formatter.FormataTelefoneComDdd;
 
-public class ValidaTelefoneComDdd {
+public class ValidaTelefoneComDdd implements Validador{
 
     public static final String TELEFONE_DEVE_TER_ENTRE_10_A_11_DIGITOS = "Telefone deve ter entre 10 a 11 digitos";
     private final TextInputLayout textImputTelefoneComDdd;
@@ -29,11 +29,13 @@ public class ValidaTelefoneComDdd {
         return true;
     }
 
+    @Override
     public boolean estaValido(){
         if(!validacaoPadrao.estaValido())return false;
         String telefoneComDdd = campoTelefoneComDdd.getText().toString();
-        if(!validaEntreDezouOnzeDigitos(telefoneComDdd))return false;
-        adicionaFormatacao(telefoneComDdd);
+        String  telefoneComDddSemFormatacao = formatador.remove(telefoneComDdd);
+        if(!validaEntreDezouOnzeDigitos(telefoneComDddSemFormatacao))return false;
+        adicionaFormatacao(telefoneComDddSemFormatacao);
         return true;
     }
 

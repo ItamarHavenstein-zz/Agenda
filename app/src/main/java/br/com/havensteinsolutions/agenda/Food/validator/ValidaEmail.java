@@ -4,7 +4,7 @@ import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class ValidaEmail {
+public class ValidaEmail implements Validador{
 
     private final TextInputLayout textInputEmail;
     private final EditText campoEmail;
@@ -24,6 +24,7 @@ public class ValidaEmail {
         return false;
     }
 
+    @Override
     public boolean estaValido() {
         if (!validador.estaValido()) return false;
         String email = campoEmail.getText().toString();
