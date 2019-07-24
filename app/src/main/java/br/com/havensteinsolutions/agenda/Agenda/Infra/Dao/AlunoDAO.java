@@ -1,19 +1,30 @@
-package br.com.havensteinsolutions.agenda.Agenda.dao;
+package br.com.havensteinsolutions.agenda.Agenda.Infra.Dao;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
-public class AlunoDAO extends SQLiteOpenHelper {
+@Dao
+public interface AlunoDAO {
+    @Insert
+    void salva(Aluno aluno);
 
+    @Query("SELECT * FROM aluno")
+    List<Aluno> todos();
 
+    @Delete
+    void remove(Aluno aluno);
+
+//falta implementar
+    void altera(Aluno aluno);
+
+    @Query("SELECT * FROM aluno WHERE telefone = telefone")
+    boolean ehAluno(String telefone);
 //    public AlunoDAO(Context context) {
 //        super(context, "Agenda", null, 2);
 //    }

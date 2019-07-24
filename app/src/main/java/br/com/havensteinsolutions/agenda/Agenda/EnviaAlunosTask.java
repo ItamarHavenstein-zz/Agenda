@@ -5,19 +5,27 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.room.Room;
+
 import java.util.List;
 
 import br.com.havensteinsolutions.agenda.Agenda.Converter.AlunoConverter;
-import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
 public class EnviaAlunosTask extends AsyncTask<Void, Void, String> {
 
     private Context context;
     private ProgressDialog dialog;
+    private final AlunoDAO dao;
 
     public EnviaAlunosTask(Context context) {
         this.context = context;
+        this.dao = Room.databaseBuilder(context, AgendaDatabase.class, "agenda.db")
+                .allowMainThreadQueries()
+                .build()
+                .getRoomAlunoDAO();
     }
 
     @Override
@@ -27,9 +35,7 @@ public class EnviaAlunosTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... objects) {
-        AlunoDAO dao = new AlunoDAO(context);
-        List<Aluno> alunos = dao.buscaAlunos();
-        dao.close();
+        List<Aluno> alunos = dao.todos();
         AlunoConverter conversor = new AlunoConverter();
         String json = conversor.converteParaJSON(alunos);
 

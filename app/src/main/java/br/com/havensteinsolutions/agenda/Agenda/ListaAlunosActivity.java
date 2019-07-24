@@ -15,22 +15,27 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.room.Room;
 
 import java.util.List;
 
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.Agenda.adapter.AlunosAdapter;
-import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 import br.com.havensteinsolutions.agenda.R;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
     private ListView listaAlunos;
+    private AlunoDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_alunos_activity);
+        InstanciaBanco();
+
         listaAlunos = (ListView) findViewById(R.id.lista_alunos);
 
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,13 +61,20 @@ public class ListaAlunosActivity extends AppCompatActivity {
         registerForContextMenu(listaAlunos);
     }
 
+    private void InstanciaBanco() {
+        dao = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
+                .allowMainThreadQueries()
+                .build()
+                .getRoomAlunoDAO();
+    }
+
     private void carregaLista() {
-        AlunoDAO dao = new AlunoDAO(this);
-        List<Aluno> alunos = dao.buscaAlunos();
-        dao.close();
+        AgendaDatabase database = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
+                .build();
+        AlunoDAO dao = database.getRoomAlunoDAO();
+        List<Aluno> alunos = dao.todos();
 
         AlunosAdapter adapter = new AlunosAdapter(this, alunos);
-        // ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, R.layout.list_item, alunos);
         listaAlunos.setAdapter(adapter);
     }
 
@@ -144,11 +156,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-
-                AlunoDAO dao = new AlunoDAO(ListaAlunosActivity.this);
-                dao.deletar(aluno);
-                dao.close();
-
+                dao.remove(aluno);
                 carregaLista();
                 return false;
             }

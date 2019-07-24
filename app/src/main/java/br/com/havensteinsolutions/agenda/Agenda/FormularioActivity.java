@@ -15,11 +15,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.room.Room;
 
 import java.io.File;
 import java.io.IOException;
 
-import br.com.havensteinsolutions.agenda.Agenda.dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 import br.com.havensteinsolutions.agenda.R;
 
@@ -30,11 +32,16 @@ public class FormularioActivity extends AppCompatActivity {
     private File storageDir;
     private Uri uriForFile;
     private File newfile;
+    private AlunoDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
+        dao = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
+                .allowMainThreadQueries()
+                .build()
+                .getRoomAlunoDAO();
         helper = new FormularioHelper(this);
 
         Intent i = getIntent();
@@ -90,14 +97,12 @@ public class FormularioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-                AlunoDAO dao = new AlunoDAO(this);
                 Aluno aluno = helper.pegaAluno();
                 if (aluno.getId() != 0) {
                     dao.altera(aluno);
                 } else {
-                    dao.inseri(aluno);
+                    dao.salva(aluno);
                 }
-                dao.close();
 
                 Toast.makeText(FormularioActivity.this, "aluno " + aluno.getNome() + " salvo", Toast.LENGTH_SHORT).show();
                 finish();

@@ -1,8 +1,12 @@
 package br.com.havensteinsolutions.agenda.Agenda.modelo;
 
-import java.io.Serializable;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+@Entity
 public class Aluno implements Serializable {
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String nome;
     private String endereco;
