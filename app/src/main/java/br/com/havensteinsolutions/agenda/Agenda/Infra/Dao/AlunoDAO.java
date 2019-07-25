@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -20,10 +21,10 @@ public interface AlunoDAO {
     @Delete
     void remove(Aluno aluno);
 
-//falta implementar
+    @Update
     void altera(Aluno aluno);
 
-    @Query("SELECT * FROM aluno WHERE telefone = telefone")
+    @Query("SELECT * FROM aluno WHERE telefone = :telefone")
     boolean ehAluno(String telefone);
 //    public AlunoDAO(Context context) {
 //        super(context, "Agenda", null, 2);

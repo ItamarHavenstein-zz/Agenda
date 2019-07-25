@@ -22,10 +22,7 @@ public class EnviaAlunosTask extends AsyncTask<Void, Void, String> {
 
     public EnviaAlunosTask(Context context) {
         this.context = context;
-        this.dao = Room.databaseBuilder(context, AgendaDatabase.class, "agenda.db")
-                .allowMainThreadQueries()
-                .build()
-                .getRoomAlunoDAO();
+        this.dao = AgendaDatabase.getInstance(context).getRoomAlunoDAO();
     }
 
     @Override

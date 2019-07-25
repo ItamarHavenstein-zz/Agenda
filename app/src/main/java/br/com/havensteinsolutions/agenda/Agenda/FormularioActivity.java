@@ -38,10 +38,7 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
-        dao = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
-                .allowMainThreadQueries()
-                .build()
-                .getRoomAlunoDAO();
+        dao = AgendaDatabase.getInstance(this).getRoomAlunoDAO();
         helper = new FormularioHelper(this);
 
         Intent i = getIntent();

@@ -9,7 +9,6 @@ import android.telephony.SmsMessage;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.room.Room;
 
 import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.R;
@@ -22,7 +21,7 @@ public class SmsReceiver extends BroadcastReceiver {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onReceive(Context context, Intent intent) {
-        InstanciaBanco(context);
+        dao = AgendaDatabase.getInstance(context).getRoomAlunoDAO();
 
         Object[] pdus = (Object[]) intent.getSerializableExtra("pdus");
         byte[] pdu = (byte[]) pdus[0];
@@ -37,12 +36,4 @@ public class SmsReceiver extends BroadcastReceiver {
             m.start();
         }
     }
-
-    private void InstanciaBanco(Context context) {
-         dao = Room.databaseBuilder(context, AgendaDatabase.class, "agenda.db")
-                .allowMainThreadQueries()
-                .build()
-                .getRoomAlunoDAO();
-    }
-
 }

@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+
 @Entity
 public class Aluno implements Serializable {
     @PrimaryKey(autoGenerate = true)
@@ -14,6 +15,7 @@ public class Aluno implements Serializable {
     private String site;
     private double nota;
     private String caminhoFoto;
+    private String Sobrenome;
 
     public String getCaminhoFoto() {
         return caminhoFoto;
@@ -71,8 +73,20 @@ public class Aluno implements Serializable {
         this.nota = nota;
     }
 
+    public String getSobrenome() {
+        return Sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        Sobrenome = sobrenome;
+    }
+
     @Override
     public String toString() {
         return getId() + " - " + getNome();
+    }
+
+    public String getNomeCompleto() {
+        return nome + " " + Sobrenome;
     }
 }

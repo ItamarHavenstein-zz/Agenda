@@ -62,16 +62,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void InstanciaBanco() {
-        dao = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
-                .allowMainThreadQueries()
-                .build()
-                .getRoomAlunoDAO();
+        dao = AgendaDatabase.getInstance(this).getRoomAlunoDAO();
     }
 
     private void carregaLista() {
-        AgendaDatabase database = Room.databaseBuilder(this, AgendaDatabase.class, "agenda.db")
-                .build();
-        AlunoDAO dao = database.getRoomAlunoDAO();
         List<Aluno> alunos = dao.todos();
 
         AlunosAdapter adapter = new AlunosAdapter(this, alunos);
