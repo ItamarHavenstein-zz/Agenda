@@ -16,7 +16,7 @@ public class FormularioHelper {
     private final EditText campoSite;
     private final RatingBar campoNota;
     private final ImageView campoFoto;
-    private final EditText campoSobrenome;
+   // private final EditText campoSobrenome;
 
     private Aluno aluno;
 
@@ -27,13 +27,13 @@ public class FormularioHelper {
         campoSite = (EditText) activity.findViewById(R.id.formulario_site);
         campoNota = (RatingBar) activity.findViewById(R.id.formulario_nota);
         campoFoto = (ImageView) activity.findViewById(R.id.formulario_foto);
-        campoSobrenome = (EditText) activity.findViewById(R.id.formulario_sobrenome);
+       // campoSobrenome = (EditText) activity.findViewById(R.id.formulario_sobrenome);
         aluno = new Aluno();
     }
 
     public Aluno pegaAluno() {
         aluno.setNome(campoNome.getText().toString());
-        aluno.setSobrenome(campoSobrenome.getText().toString());
+       // aluno.setSobrenome(campoSobrenome.getText().toString());
         aluno.setEndereco(campoEndereco.getText().toString());
         aluno.setTelefone(campoTelefone.getText().toString());
         aluno.setSite(campoSite.getText().toString());
@@ -44,7 +44,7 @@ public class FormularioHelper {
 
     public void preencheFormulario(Aluno aluno) {
         campoNome.setText(aluno.getNome());
-        campoSobrenome.setText(aluno.getSobrenome());
+       // campoSobrenome.setText(aluno.getSobrenome());
         campoEndereco.setText(aluno.getEndereco());
         campoTelefone.setText(aluno.getTelefone());
         campoSite.setText(aluno.getSite());

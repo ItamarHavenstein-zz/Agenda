@@ -36,11 +36,11 @@
             android:layout_height="wrap_content"
             android:hint="@string/nome" />
 
-        <EditText
-            android:id="@+id/formulario_sobrenome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sobrenome" />
+        <!--<EditText-->
+            <!--android:id="@+id/formulario_sobrenome"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/sobrenome" />-->
 
         <EditText
             android:id="@+id/formulario_endereco"

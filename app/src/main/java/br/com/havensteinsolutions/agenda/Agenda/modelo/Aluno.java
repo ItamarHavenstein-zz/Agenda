@@ -15,7 +15,7 @@ public class Aluno implements Serializable {
     private String site;
     private double nota;
     private String caminhoFoto;
-    private String Sobrenome;
+    //private String Sobrenome;
 
     public String getCaminhoFoto() {
         return caminhoFoto;
@@ -73,13 +73,13 @@ public class Aluno implements Serializable {
         this.nota = nota;
     }
 
-    public String getSobrenome() {
-        return Sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        Sobrenome = sobrenome;
-    }
+//    public String getSobrenome() {
+//        return Sobrenome;
+//    }
+//
+//    public void setSobrenome(String sobrenome) {
+//        Sobrenome = sobrenome;
+//    }
 
     @Override
     public String toString() {
@@ -87,6 +87,6 @@ public class Aluno implements Serializable {
     }
 
     public String getNomeCompleto() {
-        return nome + " " + Sobrenome;
+        return nome ;
     }
 }
