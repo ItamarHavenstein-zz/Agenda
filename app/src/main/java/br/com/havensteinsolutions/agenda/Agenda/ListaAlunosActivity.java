@@ -15,7 +15,6 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.room.Room;
 
 import java.util.List;
 
@@ -26,7 +25,6 @@ import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 import br.com.havensteinsolutions.agenda.R;
 
 public class ListaAlunosActivity extends AppCompatActivity {
-
     private ListView listaAlunos;
     private AlunoDAO dao;
 

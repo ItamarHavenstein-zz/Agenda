@@ -52,7 +52,7 @@ public class AlunosAdapter extends BaseAdapter {
 
 
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
-        campoNome.setText(aluno.getNomeCompleto());
+        campoNome.setText(aluno.getNome());
 
         TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
         campoTelefone.setText(aluno.getTelefone());

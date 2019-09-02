@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-import androidx.room.Room;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,8 +27,6 @@ import br.com.havensteinsolutions.agenda.R;
 public class FormularioActivity extends AppCompatActivity {
     public static final int CODIGO_CAMERA = 567;
     private FormularioHelper helper;
-    private String caminhoFoto;
-    private File storageDir;
     private Uri uriForFile;
     private File newfile;
     private AlunoDAO dao;
