@@ -36,12 +36,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/nome" />
 
-        <!--<EditText-->
-            <!--android:id="@+id/formulario_sobrenome"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="@string/sobrenome" />-->
-
         <EditText
             android:id="@+id/formulario_endereco"
             android:layout_width="match_parent"
@@ -49,10 +43,16 @@
             android:hint="@string/endereco" />
 
         <EditText
-            android:id="@+id/formulario_telefone"
+            android:id="@+id/formulario_telefone_fixo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/telefone" />
+
+        <EditText
+            android:id="@+id/formulario_telefone_celular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/telefone_celular" />
 
         <EditText
             android:id="@+id/formulario_site"

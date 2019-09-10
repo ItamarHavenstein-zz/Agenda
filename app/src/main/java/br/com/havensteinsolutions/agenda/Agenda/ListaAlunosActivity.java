@@ -116,7 +116,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
                             new String[]{Manifest.permission.CALL_PHONE}, 123);
                 } else {
                     Intent intentLigar = new Intent(Intent.ACTION_CALL);
-                    intentLigar.setData(Uri.parse("tel:" + aluno.getTelefone()));
+                  //  intentLigar.setData(Uri.parse("tel:" + aluno.getTelefoneFixo()));
                     startActivity(intentLigar);
                 }
                 return false;
@@ -126,7 +126,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         MenuItem itemSms = menu.add("Enviar SMS");
         Intent intentSms = new Intent(Intent.ACTION_VIEW);
-        intentSms.setData(Uri.parse("sms:" + aluno.getTelefone()));
+//        intentSms.setData(Uri.parse("sms:" + aluno.getTelefoneFixo()));
         itemSms.setIntent(intentSms);
 
         MenuItem visualizar_no_mapa = menu.add("Visualizar no mapa");

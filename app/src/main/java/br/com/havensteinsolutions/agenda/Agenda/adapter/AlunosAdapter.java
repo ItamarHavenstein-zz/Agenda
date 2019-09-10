@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Telefone;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.TelefoneDAO;
 import br.com.havensteinsolutions.agenda.R;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 
@@ -19,10 +22,12 @@ public class AlunosAdapter extends BaseAdapter {
 
     private final List<Aluno> alunos;
     private final Context contexto;
+    private final TelefoneDAO dao;
 
     public AlunosAdapter(Context context, List<Aluno> aluno) {
         alunos = aluno;
         contexto = context;
+        dao = AgendaDatabase.getInstance(contexto).getTelefoneDAO();
     }
 
     @Override
@@ -55,7 +60,8 @@ public class AlunosAdapter extends BaseAdapter {
         campoNome.setText(aluno.getNome());
 
         TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
-        campoTelefone.setText(aluno.getTelefone());
+        Telefone primeiroTelefone = dao.buscaPrimeiroTelefoneDoAluno((int) aluno.getId());
+        campoTelefone.setText(primeiroTelefone.getNumero());
 
         TextView campoEndereco = (TextView) view.findViewById(R.id.item_endereco);
         if (campoEndereco != null) {

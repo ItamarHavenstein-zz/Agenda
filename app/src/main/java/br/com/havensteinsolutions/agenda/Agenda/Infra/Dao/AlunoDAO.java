@@ -24,6 +24,6 @@ public interface AlunoDAO {
     @Update
     void altera(Aluno aluno);
 
-    @Query("SELECT * FROM aluno WHERE telefone = :telefone")
-    boolean ehAluno(String telefone);
+//    @Query("SELECT * FROM aluno WHERE telefoneFixo = :telefone")
+//    boolean ehAluno(String telefone);
 }

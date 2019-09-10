@@ -30,10 +30,10 @@ public class SmsReceiver extends BroadcastReceiver {
         SmsMessage sms = SmsMessage.createFromPdu(pdu, formato);
 
         String Telefone = sms.getDisplayOriginatingAddress();
-        if (dao.ehAluno(Telefone)) {
-            Toast.makeText(context, "Chegou um sms de aluno", Toast.LENGTH_SHORT).show();
-            MediaPlayer m = MediaPlayer.create(context, R.raw.msg);
-            m.start();
-        }
+//        if (dao.ehAluno(Telefone)) {
+//            Toast.makeText(context, "Chegou um sms de aluno", Toast.LENGTH_SHORT).show();
+//            MediaPlayer m = MediaPlayer.create(context, R.raw.msg);
+//            m.start();
+//        }
     }
 }

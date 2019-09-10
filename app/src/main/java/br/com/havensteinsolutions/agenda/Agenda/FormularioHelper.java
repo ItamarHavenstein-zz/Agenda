@@ -12,30 +12,30 @@ import br.com.havensteinsolutions.agenda.R;
 public class FormularioHelper {
     private final EditText campoNome;
     private final EditText campoEndereco;
-    private final EditText campoTelefone;
+    private final EditText campoTelefoneFixo;
+    private final EditText campoTelefoneCelular;
     private final EditText campoSite;
     private final RatingBar campoNota;
     private final ImageView campoFoto;
-   // private final EditText campoSobrenome;
 
     private Aluno aluno;
 
     public FormularioHelper(FormularioActivity activity) {
         campoNome = (EditText) activity.findViewById(R.id.formulario_nome);
         campoEndereco = (EditText) activity.findViewById(R.id.formulario_endereco);
-        campoTelefone = (EditText) activity.findViewById(R.id.formulario_telefone);
+        campoTelefoneFixo = (EditText) activity.findViewById(R.id.formulario_telefone_fixo);
+        campoTelefoneCelular = (EditText) activity.findViewById(R.id.formulario_telefone_celular);
         campoSite = (EditText) activity.findViewById(R.id.formulario_site);
         campoNota = (RatingBar) activity.findViewById(R.id.formulario_nota);
         campoFoto = (ImageView) activity.findViewById(R.id.formulario_foto);
-       // campoSobrenome = (EditText) activity.findViewById(R.id.formulario_sobrenome);
         aluno = new Aluno();
     }
 
     public Aluno pegaAluno() {
         aluno.setNome(campoNome.getText().toString());
-       // aluno.setSobrenome(campoSobrenome.getText().toString());
         aluno.setEndereco(campoEndereco.getText().toString());
-        aluno.setTelefone(campoTelefone.getText().toString());
+//        aluno.setTelefoneFixo(campoTelefoneFixo.getText().toString());
+//        aluno.setTelefoneCelular(campoTelefoneCelular.getText().toString());
         aluno.setSite(campoSite.getText().toString());
         aluno.setNota(Double.valueOf(campoNota.getProgress()));
         aluno.setCaminhoFoto((String) campoFoto.getTag());
@@ -44,9 +44,9 @@ public class FormularioHelper {
 
     public void preencheFormulario(Aluno aluno) {
         campoNome.setText(aluno.getNome());
-       // campoSobrenome.setText(aluno.getSobrenome());
         campoEndereco.setText(aluno.getEndereco());
-        campoTelefone.setText(aluno.getTelefone());
+//        campoTelefoneFixo.setText(aluno.getTelefoneFixo());
+//        campoTelefoneCelular.setText(aluno.getTelefoneCelular());
         campoSite.setText(aluno.getSite());
         campoNota.setProgress((int) aluno.getNota());
         carregaImage(aluno.getCaminhoFoto());

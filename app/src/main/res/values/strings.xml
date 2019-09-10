@@ -20,6 +20,7 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="sobrenome">Sobrenome</string>
     <string name="nome">Nome</string>
-    <string name="telefone">Telefone</string>
+    <string name="telefone">Telefone-Fixo</string>
     <string name="endereco">Endereço</string>
+    <string name="telefone_celular">Telefone-Celular</string>
 </resources>
