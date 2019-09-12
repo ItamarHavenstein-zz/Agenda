@@ -18,6 +18,12 @@ public class Telefone {
             onDelete = ForeignKey.CASCADE)
     private int alunoId;
 
+    public Telefone(String numero, TipoTelefone tipo) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.alunoId = alunoId;
+    }
+
     public int getAlunoId() {
         return alunoId;
     }

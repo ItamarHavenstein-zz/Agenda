@@ -7,24 +7,24 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.Agenda.modelo.Telefone;
 import br.com.havensteinsolutions.agenda.R;
 
 public class FormularioHelper {
     private final EditText campoNome;
     private final EditText campoEndereco;
-    private final EditText campoTelefoneFixo;
-    private final EditText campoTelefoneCelular;
+//    private final EditText campoTelefoneFixo;
+//    private final EditText campoTelefoneCelular;
     private final EditText campoSite;
     private final RatingBar campoNota;
     private final ImageView campoFoto;
 
     private Aluno aluno;
+    private Telefone telefone;
 
     public FormularioHelper(FormularioActivity activity) {
         campoNome = (EditText) activity.findViewById(R.id.formulario_nome);
         campoEndereco = (EditText) activity.findViewById(R.id.formulario_endereco);
-        campoTelefoneFixo = (EditText) activity.findViewById(R.id.formulario_telefone_fixo);
-        campoTelefoneCelular = (EditText) activity.findViewById(R.id.formulario_telefone_celular);
         campoSite = (EditText) activity.findViewById(R.id.formulario_site);
         campoNota = (RatingBar) activity.findViewById(R.id.formulario_nota);
         campoFoto = (ImageView) activity.findViewById(R.id.formulario_foto);
@@ -41,6 +41,10 @@ public class FormularioHelper {
         aluno.setCaminhoFoto((String) campoFoto.getTag());
         return aluno;
     }
+
+//    public Telefone pegaTelefone(){
+//        telefone.setNumero();
+//    }
 
     public void preencheFormulario(Aluno aluno) {
         campoNome.setText(aluno.getNome());
