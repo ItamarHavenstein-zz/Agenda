@@ -30,7 +30,6 @@ public abstract class AgendaDatabase extends RoomDatabase {
     public static AgendaDatabase getInstance(Context contexto) {
         if (instance == null) {
             instance = Room.databaseBuilder(contexto, AgendaDatabase.class, NOME_DO_BANCO_DE_DADOS)
-                    .allowMainThreadQueries()
                     .addMigrations(TODAS_MIGRATIONS)
                     .build();
         }

@@ -21,6 +21,8 @@ import java.util.List;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.Agenda.adapter.AlunosAdapter;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.BuscaAlunoTask;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.RemoveAlunoTask;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 import br.com.havensteinsolutions.agenda.R;
 
@@ -64,10 +66,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void carregaLista() {
-        List<Aluno> alunos = dao.todos();
-
-        AlunosAdapter adapter = new AlunosAdapter(this, alunos);
-        listaAlunos.setAdapter(adapter);
+        new BuscaAlunoTask(this,dao,listaAlunos).execute();
     }
 
     @Override
@@ -148,7 +147,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                dao.remove(aluno);
+                new RemoveAlunoTask(dao,aluno).execute();
+               // dao.remove(aluno);
                 carregaLista();
                 return false;
             }
