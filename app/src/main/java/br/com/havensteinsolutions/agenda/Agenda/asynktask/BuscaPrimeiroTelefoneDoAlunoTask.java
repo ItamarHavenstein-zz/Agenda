@@ -5,17 +5,16 @@ import android.widget.TextView;
 
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.TelefoneDAO;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Telefone;
-import br.com.havensteinsolutions.agenda.R;
 
-public class BuscaPrimeiroTelefoneDoAluno extends AsyncTask<Void,Void, Telefone> {
+public class BuscaPrimeiroTelefoneDoAlunoTask extends AsyncTask<Void,Void, Telefone> {
     private final TelefoneDAO dao;
-    private final TextView telefone;
     private final int alunoId;
+    private final PrimeiroTelefoneEncontradoListener listener;
 
-    public BuscaPrimeiroTelefoneDoAluno(TelefoneDAO dao, TextView telefone, int alunoId) {
+    public BuscaPrimeiroTelefoneDoAlunoTask(TelefoneDAO dao, int alunoId, PrimeiroTelefoneEncontradoListener listener) {
         this.dao = dao;
-        this.telefone = telefone;
         this.alunoId = alunoId;
+        this.listener = listener;
     }
 
     @Override
@@ -26,6 +25,11 @@ public class BuscaPrimeiroTelefoneDoAluno extends AsyncTask<Void,Void, Telefone>
     @Override
     protected void onPostExecute(Telefone primeirotelefone) {
         super.onPostExecute(primeirotelefone);
-        telefone.setText(primeirotelefone.getNumero());
+        listener.quandoEncontrado(primeirotelefone);
     }
+
+    public interface PrimeiroTelefoneEncontradoListener{
+        void quandoEncontrado(Telefone telefoneEncontrado);
+    }
+
 }

@@ -12,12 +12,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
-import br.com.havensteinsolutions.agenda.Agenda.asynktask.BuscaPrimeiroTelefoneDoAluno;
-import br.com.havensteinsolutions.agenda.Agenda.modelo.Telefone;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.TelefoneDAO;
-import br.com.havensteinsolutions.agenda.R;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.BuscaPrimeiroTelefoneDoAlunoTask;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
+import br.com.havensteinsolutions.agenda.R;
 
 public class AlunosAdapter extends BaseAdapter {
 
@@ -56,11 +55,11 @@ public class AlunosAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.list_item, parent, false);
         }
 
-
         TextView campoNome = (TextView) view.findViewById(R.id.item_nome);
         campoNome.setText(aluno.getNome());
         TextView campoTelefone = (TextView) view.findViewById(R.id.item_telefone);
-            new BuscaPrimeiroTelefoneDoAluno(dao,campoTelefone,(int)aluno.getId()).execute();
+        new BuscaPrimeiroTelefoneDoAlunoTask(dao, (int) aluno.getId(), telefoneEncontrado ->
+                campoTelefone.setText(telefoneEncontrado.getNumero())).execute();
 
         TextView campoEndereco = (TextView) view.findViewById(R.id.item_endereco);
         if (campoEndereco != null) {

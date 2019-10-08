@@ -16,11 +16,8 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import java.util.List;
-
-import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
-import br.com.havensteinsolutions.agenda.Agenda.adapter.AlunosAdapter;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
+import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
 import br.com.havensteinsolutions.agenda.Agenda.asynktask.BuscaAlunoTask;
 import br.com.havensteinsolutions.agenda.Agenda.asynktask.RemoveAlunoTask;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
@@ -66,7 +63,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void carregaLista() {
-        new BuscaAlunoTask(this,dao,listaAlunos).execute();
+        new BuscaAlunoTask(this, dao, listaAlunos).execute();
     }
 
     @Override
@@ -115,7 +112,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
                             new String[]{Manifest.permission.CALL_PHONE}, 123);
                 } else {
                     Intent intentLigar = new Intent(Intent.ACTION_CALL);
-                  //  intentLigar.setData(Uri.parse("tel:" + aluno.getTelefoneFixo()));
                     startActivity(intentLigar);
                 }
                 return false;
@@ -124,8 +120,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
 
         MenuItem itemSms = menu.add("Enviar SMS");
-        Intent intentSms = new Intent(Intent.ACTION_VIEW);
-//        intentSms.setData(Uri.parse("sms:" + aluno.getTelefoneFixo()));
+        Intent intentSms = new Intent(Intent.ACTION_VIEW);;
         itemSms.setIntent(intentSms);
 
         MenuItem visualizar_no_mapa = menu.add("Visualizar no mapa");
@@ -147,8 +142,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                new RemoveAlunoTask(dao,aluno).execute();
-               // dao.remove(aluno);
+                new RemoveAlunoTask(dao, aluno).execute();
                 carregaLista();
                 return false;
             }

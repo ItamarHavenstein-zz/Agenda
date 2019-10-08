@@ -24,6 +24,9 @@ import java.util.List;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.AlunoDAO;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.Dao.TelefoneDAO;
 import br.com.havensteinsolutions.agenda.Agenda.Infra.database.AgendaDatabase;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.BuscaTodosTelefonesDoAluno;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.EditaAlunoTask;
+import br.com.havensteinsolutions.agenda.Agenda.asynktask.SalvaAlunoTask;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Aluno;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.Telefone;
 import br.com.havensteinsolutions.agenda.Agenda.modelo.TipoTelefone;
@@ -90,14 +93,16 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     private void preencheCamposDeTelefone(Aluno aluno) {
-        telefonesDoAluno = telefoneDAO.buscaTodosTelefonesDoAluno(aluno.getId());
-        for (Telefone telefone : telefonesDoAluno) {
-            if (telefone.getTipo() == TipoTelefone.FIXO) {
-                campoTelefoneFixo.setText(telefone.getNumero());
-            } else {
-                campoTelefoneCelular.setText(telefone.getNumero());
+        new BuscaTodosTelefonesDoAluno(telefoneDAO, aluno, telefones -> {
+            this.telefonesDoAluno = telefones;
+            for (Telefone telefone : telefonesDoAluno) {
+                if (telefone.getTipo() == TipoTelefone.FIXO) {
+                    campoTelefoneFixo.setText(telefone.getNumero());
+                } else {
+                    campoTelefoneCelular.setText(telefone.getNumero());
+                }
             }
-        }
+        }).execute();
     }
 
     @Override
@@ -136,7 +141,6 @@ public class FormularioActivity extends AppCompatActivity {
                 finish();
                 break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -146,32 +150,10 @@ public class FormularioActivity extends AppCompatActivity {
     }
 
     private void salvaAluno(Aluno aluno, Telefone telefoneFixo, Telefone telefoneCelular) {
-        int alunoId = alunoDAO.salva(aluno).intValue();
-        vinculaAlunoComTelefone(alunoId, telefoneFixo, telefoneCelular);
-        telefoneDAO.salva(telefoneFixo, telefoneCelular);
+        new SalvaAlunoTask(alunoDAO, aluno, telefoneFixo, telefoneCelular, telefoneDAO, this::finish).execute();
     }
 
     private void editaAluno(Aluno aluno, Telefone telefoneFixo, Telefone telefoneCelular) {
-        alunoDAO.altera(aluno);
-        vinculaAlunoComTelefone((int) aluno.getId(), telefoneFixo, telefoneCelular);
-
-        atualizaIdDosTelefones(telefoneFixo, telefoneCelular);
-        telefoneDAO.atualiza(telefoneFixo, telefoneCelular);
-    }
-
-    private void atualizaIdDosTelefones(Telefone telefoneFixo, Telefone telefoneCelular) {
-        for (Telefone telefone : telefonesDoAluno) {
-            if (telefone.getTipo() == TipoTelefone.FIXO) {
-                telefoneFixo.setId(telefone.getId());
-            } else {
-                telefoneCelular.setId(telefone.getId());
-            }
-        }
-    }
-
-    private void vinculaAlunoComTelefone(int alunoId, Telefone... telefones) {
-        for (Telefone telefone : telefones) {
-            telefone.setAlunoId(alunoId);
-        }
+        new EditaAlunoTask(alunoDAO, aluno, telefoneFixo, telefoneCelular, telefoneDAO, telefonesDoAluno, this::finish).execute();
     }
 }

@@ -13,8 +13,6 @@ import br.com.havensteinsolutions.agenda.R;
 public class FormularioHelper {
     private final EditText campoNome;
     private final EditText campoEndereco;
-//    private final EditText campoTelefoneFixo;
-//    private final EditText campoTelefoneCelular;
     private final EditText campoSite;
     private final RatingBar campoNota;
     private final ImageView campoFoto;
@@ -34,23 +32,15 @@ public class FormularioHelper {
     public Aluno pegaAluno() {
         aluno.setNome(campoNome.getText().toString());
         aluno.setEndereco(campoEndereco.getText().toString());
-//        aluno.setTelefoneFixo(campoTelefoneFixo.getText().toString());
-//        aluno.setTelefoneCelular(campoTelefoneCelular.getText().toString());
         aluno.setSite(campoSite.getText().toString());
         aluno.setNota(Double.valueOf(campoNota.getProgress()));
         aluno.setCaminhoFoto((String) campoFoto.getTag());
         return aluno;
     }
 
-//    public Telefone pegaTelefone(){
-//        telefone.setNumero();
-//    }
-
     public void preencheFormulario(Aluno aluno) {
         campoNome.setText(aluno.getNome());
         campoEndereco.setText(aluno.getEndereco());
-//        campoTelefoneFixo.setText(aluno.getTelefoneFixo());
-//        campoTelefoneCelular.setText(aluno.getTelefoneCelular());
         campoSite.setText(aluno.getSite());
         campoNota.setProgress((int) aluno.getNota());
         carregaImage(aluno.getCaminhoFoto());
